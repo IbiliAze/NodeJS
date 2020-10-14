@@ -1,0 +1,46 @@
+<html>
+    <body>
+
+        <h1 style="text-align:center;">My First Heading</h1>
+        <p id='p1' style="text-align:center;">My first paragraph.</br>
+        My first paragraph.</p>
+        <p id='p2' style="text-align:center;">my second para</p>
+        <p id='p3' style="text-align:center;"></p>
+        <p id='p4' style="text-align:center;"></p>
+        <p id='p5' style="text-align:center;">not set</p>
+        <p id='p6' style="text-align:center;">not set</p>
+        <script>
+            var a = 5;
+            var x = 54;
+            var sum = a + x;
+            document.getElementById('p3').innerHTML = sum;
+
+            var array1 = ["hello","cloud","gurus"];
+            document.getElementById('p4').innerHTML = array1[2]
+
+            var b = 352;
+            if(b<89)
+            {
+                document.getElementById('p5').innerHTML = "alright cool"
+            } else
+            {
+                document.getElementById('p5').innerHTML = "alright not cool"
+            }
+
+            var array2 = ["hello","cloud","gurus"];
+            var output = "";
+            for (i = 0; i < array2.length; i++){
+                output += "this is " + array2[i] + "</br>";
+            }
+            document.getElementById('p6').innerHTML = output
+        </script>
+
+        <button type="button" onclick="document.getElementById('p1').innerHTML='Hello World!!';">
+            click me
+        </button>
+        <button type="button" onclick="document.getElementById('p2').innerHTML='this is js!!';">
+            click me
+        </button>
+
+    </body>
+</html>
