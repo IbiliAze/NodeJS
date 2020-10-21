@@ -1,0 +1,24 @@
+{
+    "name": "AWS Playbook",
+    "hosts": "r1",
+    "tasks": [
+        {
+            "name": "Commands",
+            "ios_command": {
+                "commands": [
+                    "configure terminal"
+                ]
+            },
+            "register": "output"
+        },
+        {
+            "name": "make sure a directory exists",
+            "file": {
+                "path": "outputs",
+                "state": "directory"
+            },
+            "run_once": true,
+            "delegate_to": "localhost"
+        }
+    ]
+}
