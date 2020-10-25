@@ -45,6 +45,7 @@ function Video(title) {
 const video1 = new Video('mytitle') // new creates an empty object as such {} and This becomes this new object
                                     // then the object is populated with this.title
 console.log(video1);
+console.log(video1.founded);        // undefined as 'founded' is a local variable
 
 
 

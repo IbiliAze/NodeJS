@@ -38,3 +38,30 @@ console.log('\n', 2);
 /////////
 //To this
 /////////
+
+function taskPromise(){
+    return new Promise((resolve, reject) => {
+        if (taskFailed) {
+            reject({
+                name: "87UHFI",
+                message: "Task failed"
+            })
+        } else if (taskStillGoing) {
+            reject({
+                name: "384HIY",
+                message: "Task took too long to process"
+            })
+        } else {
+            resolve({
+                name: "234FDB",
+                message: "Task completed successfully"
+            })
+        }
+    });
+};
+
+taskPromise().then((message) => {
+    console.log(`Success: ${message.name} -> ${message.message}`);
+}).catch((errorMessage) => {
+    console.log(`Fail: ${errorMessage.name} -> ${errorMessage.message}`);
+});

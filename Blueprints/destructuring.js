@@ -46,7 +46,7 @@ console.log(name, age)
 
 
 console.log('\n', 4)
-// Mapping, so you can use default values again
+// Mapping with an Alias, so you can use default values again
 const person2 = {
     name: 'Sally',
     age: 43,
@@ -61,7 +61,7 @@ console.log(firstName, ageAgain)
 
 
 
-console.log('\n', 4)
+console.log('\n', 5)
 // Rest
 const person3 = {
     name: 'Sally',
@@ -77,7 +77,7 @@ console.log(firstName2, ageAgain2, rest2)
 
 
 
-console.log('\n', 5)
+console.log('\n', 6)
 // If it doesn't exist
 const person4 = {
     name: 'Sally',
@@ -93,7 +93,7 @@ console.log(firstName3, ageAgain3, rest3, favouriteFood)
 
 
 
-console.log('\n', 6)
+console.log('\n', 7)
 // Combining, where person6 overwrites person5
 const person5 = {
     name: 'Sally',
@@ -118,7 +118,7 @@ console.log(person7)
 ////////////
 // Functions
 ////////////
-console.log('\n', 7)
+console.log('\n', 8)
 // Basics
 const printUser = function( { name, age } ) {
     console.log(name, age)
@@ -128,7 +128,7 @@ printUser(person6)
 
 
 
-console.log('\n', 8)
+console.log('\n', 9)
 // Also a paramter that doesn't exist in the obejct
 const printUser2 = function( { name, age, favouriteFood='banana' } ) {
     console.log(name, age, favouriteFood)
@@ -138,7 +138,7 @@ printUser2(person6)
 
 
 
-console.log('\n', 9)
+console.log('\n', 10)
 // Assign a parameter IF it doesn't already exist
 const printUser3 = function( { name, age, favouriteFoodAlso='banana' } ) {
     console.log(name, age, favouriteFood)

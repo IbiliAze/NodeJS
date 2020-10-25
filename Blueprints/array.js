@@ -31,3 +31,12 @@ console.log(activeJobs)
 
 
 
+
+console.log('\n', 4)
+// mapping / transforming
+colours = ['red', 'blue', 'white'];
+const items = colours.map(item => `<li>${item}</li>`);     //automatically returns as there is only 1 line);
+console.log(items)
+
+
+
