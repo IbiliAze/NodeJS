@@ -62,6 +62,17 @@ function taskPromise(){
 
 taskPromise().then((message) => {
     console.log(`Success: ${message.name} -> ${message.message}`);
-}).catch((errorMessage) => {
+})
+    .catch((errorMessage) => {
     console.log(`Fail: ${errorMessage.name} -> ${errorMessage.message}`);
 });
+
+//
+//
+//                              fulfilled
+//                             /
+//  Promise     -- pending -->
+//                             \
+//                              rejected
+//
+//
