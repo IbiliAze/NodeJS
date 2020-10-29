@@ -13,3 +13,32 @@ console.log('\n', 2)
 const square2 = number => number**2
 
 console.log(square2(5))
+
+
+
+console.log('\n', 2)
+// arrow functions are bad for methods
+const tasks = {
+    tasks: [
+        {
+            text: "shopping",
+            completed: true
+        },
+        {
+            text: "eating",
+            completed: true
+        },
+        {
+            text: "sleeping",
+            completed: false
+        },
+        {
+            text: "filming",
+            completed: false
+        }
+    ],
+    getTasksTool() {
+        return this.tasks.filter((task) =>  task.completed === false)
+    }
+};
+console.log(tasks.getTasksTool());

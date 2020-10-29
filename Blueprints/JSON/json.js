@@ -21,7 +21,7 @@ fs.writeFileSync('file.json', bookJSON);
 // READ
 console.log('\n', 3)
 const data = fs.readFileSync('file.json').toString();
-const dataObject = JSON.parse(data);
+const dataObject = JSON.parse(data.current);
 
 console.log(data);
 console.log(dataObject);
