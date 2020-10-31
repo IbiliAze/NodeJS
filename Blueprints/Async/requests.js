@@ -13,6 +13,22 @@ const headers = {
 
 
 request({uri: uri, json: true, headers:headers}, (error, response) => {
-    console.log(response.body.current);
+    if (error) {
+        console.log(response)
+        return console.log(`ERR: ${error}`);
+
+    } else if (response.statusCode === 404) {
+        console.log('Unable to find');
+
+    } else if (response.statusCode === 400) {
+        console.log('Bad request');
+
+    } else {
+        console.log(`Status code: ${response.statusCode}`);
+        const temp = response.body.current.temperature;
+        console.log(`The current temp is ${temp}`);
+    }
 });
+
+console.log('start message')
 
