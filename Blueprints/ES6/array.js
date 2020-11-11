@@ -45,3 +45,17 @@ console.log(items);
 
 
 
+
+
+console.log('\n', 6)
+// for every item in array
+const object1 = {
+    'orgName': 'afenia'
+}
+const updateKeys = Object.keys(object1);
+const allowedUpdates = ['isInUse', 'orgName', 'brand', 'model', 'siteName'];
+const isValidOperation = updateKeys.every((updt) => allowedUpdates.includes(updt));
+if (!isValidOperation) {
+    return console.log('Invalid')
+};
+console.log('Its valid');
