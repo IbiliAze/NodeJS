@@ -26,8 +26,14 @@ const configSchema = new mongoose.Schema({
         }
     },
     siteId: {
-        type: String,
-        required: true
+        type: mongoose.Schema.Types.ObjectId,
+        required: true,
+        ref: 'Site'
+    },
+    orgId: {
+        type: mongoose.Schema.Types.ObjectId,
+        required: true,
+        ref: 'Org'
     },
     nhrp: {
         hubNbmaIp: {

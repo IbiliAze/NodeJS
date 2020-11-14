@@ -2,14 +2,13 @@ const Site = require('../models/site');
 
 const doesSiteExist = async (request, response, next) => {
     try {
-        const siteId = request.body['siteId'];
-        const site = await Site.findById(siteId);
+        const site = await Site.findOne({ _id: request.params.id, orgId: request.org._id });
         if (!site) {
-            console.error(`Site not found, ID: ${siteId}`);
+            console.error(`Site not found, ID: ${request.params.siteId}`);
             return response.status(404).send({
                 error: 'Site not found',
-                id: request.body['siteId'],
-                id: request.params.id
+                ID: request.body['siteId'],
+                ID: request.params.id
             });
         };
         next();

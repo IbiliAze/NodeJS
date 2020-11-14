@@ -3,12 +3,12 @@ const Config = require('../models/config');
 const doesConfigExist = async (request, response, next) => {
     try {
         const configId = request.params.id;
-        const config = await Config.findById(configId);
+        const config = await Config.findOne({ _id: configId, orgId: request.org._id });
         if (!config) {
             console.error(`Config not found, ID: ${configId}`);
             return response.status(404).send({
                 error: 'Config not found',
-                id: request.params.id
+                ID: request.params.id
             });
         };
         next();
