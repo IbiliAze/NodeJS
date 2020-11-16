@@ -4,7 +4,6 @@ const jwt = require('jsonwebtoken');
 const bycrypt = require('bcryptjs');
 
 const Site = require('./site');
-const Config = require('./config');
 
 
 const orgSchema = new mongoose.Schema({
@@ -52,14 +51,7 @@ const orgSchema = new mongoose.Schema({
 });
 
 
-orgSchema.virtual('sites', {
-    ref: 'Site',
-    localField: '_id',
-    foreignField: 'orgId'
-});
-
-
-orgSchema.methods.toJSON = function () {
+orgSchema.methods.toJSON = function() {
     const org = this;
     const orgObject = org.toObject();
    
@@ -71,18 +63,7 @@ orgSchema.methods.toJSON = function () {
 };
 
 
-orgSchema.methods.generateAuthToken = async function() {
-    const org = this;
-    const token = jwt.sign({ _id: org._id.toString() }, 'privatesecret' );
-
-    org.tokens = org.tokens.concat({ token });
-    await org.save();
-
-    return token;
-};
-
-
-orgSchema.pre('save', async function (next) {
+orgSchema.pre('save', async function(next) {
     const org = this;
     if (org.isModified('password')) {
         org.password = await bycrypt.hash(org.password, 8);
@@ -92,16 +73,26 @@ orgSchema.pre('save', async function (next) {
 });
 
 
-orgSchema.pre('remove', async function (next) {
+orgSchema.pre('remove', async function(next) {
     const org = this;
     await Site.deleteMany({ orgId: org._id });
-    await Config.deleteMany({ orgId: org._id });
 
     next();
 });
 
 
-orgSchema.statics.findByCredentials = async function (email, password) {
+orgSchema.methods.generateToken = async function() {
+    const org = this;
+    const token = jwt.sign({ _id: org._id.toString() }, 'privatesecret');
+
+    org.tokens = org.tokens.concat({ token });
+    await org.save();
+    
+    return token;
+};
+
+
+orgSchema.statics.findByCredentials = async function(email, password) {
     const org = await Org.findOne({ email });
     if (!org) {
         throw new Error(`Organization with ID: ${org._id} does not exist`);
@@ -111,13 +102,13 @@ orgSchema.statics.findByCredentials = async function (email, password) {
     if (!isMatch) {
         throw new Error(`Authentication failed, ID: ${org._id}`);
     };
+    console.log(email, password)
 
     return org;
 };
 
 
 const Org = mongoose.model('Org', orgSchema);
-
 
 
 module.exports = Org;
