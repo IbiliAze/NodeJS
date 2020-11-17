@@ -1,6 +1,6 @@
 const mongoose = require('mongoose');
 const validator = require('validator');
-// const Config = require('./config');
+const Config = require('./config');
 
 
 const siteSchema = new mongoose.Schema({
@@ -55,8 +55,15 @@ siteSchema.methods.toJSON = function () {
 };
 
 
-const Site = mongoose.model('Site', siteSchema);
+siteSchema.pre('remove', async function(next) {
+    const site = this;
+    await Config.deleteMany({ orgId: site.orgId, siteId: site._id });
 
+    next();
+});
+
+
+const Site = mongoose.model('Site', siteSchema);
 
 
 module.exports = Site;

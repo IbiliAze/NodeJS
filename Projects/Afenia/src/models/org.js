@@ -4,6 +4,7 @@ const jwt = require('jsonwebtoken');
 const bycrypt = require('bcryptjs');
 
 const Site = require('./site');
+const Config = require('./config');
 
 
 const orgSchema = new mongoose.Schema({
@@ -51,6 +52,13 @@ const orgSchema = new mongoose.Schema({
 });
 
 
+orgSchema.virtual('sites', {
+    ref: 'Site',
+    localField: '_id',
+    foreignField: 'orgId'
+});
+
+
 orgSchema.methods.toJSON = function() {
     const org = this;
     const orgObject = org.toObject();
@@ -76,6 +84,7 @@ orgSchema.pre('save', async function(next) {
 orgSchema.pre('remove', async function(next) {
     const org = this;
     await Site.deleteMany({ orgId: org._id });
+    await Config.deleteMany({ orgId: org._id });
 
     next();
 });
@@ -102,7 +111,6 @@ orgSchema.statics.findByCredentials = async function(email, password) {
     if (!isMatch) {
         throw new Error(`Authentication failed, ID: ${org._id}`);
     };
-    console.log(email, password)
 
     return org;
 };

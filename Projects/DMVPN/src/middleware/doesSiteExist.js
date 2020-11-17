@@ -1,5 +1,6 @@
 const Site = require('../models/site');
 
+
 const doesSiteExist = async (request, response, next) => {
     try {
         const site = await Site.findOne({ _id: request.params.id, orgId: request.org._id });

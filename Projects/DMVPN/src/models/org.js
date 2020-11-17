@@ -49,6 +49,8 @@ const orgSchema = new mongoose.Schema({
             }
         }
     ]
+}, {
+    timestamps: true
 });
 
 
@@ -117,7 +119,6 @@ orgSchema.statics.findByCredentials = async function (email, password) {
 
 
 const Org = mongoose.model('Org', orgSchema);
-
 
 
 module.exports = Org;

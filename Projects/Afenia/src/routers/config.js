@@ -126,7 +126,7 @@ router.delete('/config/:id', authenticateToken, doesConfigExist, async (request,
             error: error
         });
     };
-});
+}); 
 
 
-module.exports = router;
+module.exports = router

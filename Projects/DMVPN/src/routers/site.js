@@ -5,6 +5,7 @@ const Site = require('../models/site');
 
 const doesSiteExist = require('../middleware/doesSiteExist');
 const authenticateToken = require('../middleware/authenticateToken');
+const siteQuerystring = require('../middleware/siteQuerystring');
 
 
 // Routes
@@ -31,7 +32,7 @@ router.post('/site', authenticateToken, async (request, response) => {
 
 
 // GET /api/site
-router.get('/site', authenticateToken, async (request, response) => {
+router.get('/site', authenticateToken, siteQuerystring, async (request, response) => {
     try {
         const sites = await Site.find({ orgId: request.org._id });
         console.log(`Sites fetched successfully`);
