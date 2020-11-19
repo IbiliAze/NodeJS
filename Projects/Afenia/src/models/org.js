@@ -49,6 +49,8 @@ const orgSchema = new mongoose.Schema({
             }
         }
     ]
+}, {
+    timestamps: true
 });
 
 

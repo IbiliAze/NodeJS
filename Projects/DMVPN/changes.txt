@@ -7,3 +7,11 @@ Timestamps {
 Lowercase {
     site model
 }
+
+siteQuerystring middleware {
+    GET /api/site
+}
+
+configQuerystring middleware {
+    GET /api/config
+}

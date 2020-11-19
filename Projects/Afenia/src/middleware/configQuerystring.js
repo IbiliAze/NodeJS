@@ -1,16 +1,16 @@
-const Site = require('../models/site');
+const Config = require('../models/config');
 
 
-const siteQuerystring = async (request, response, next) => {
+const configQuerystring = async (request, response, next) => {
     try {
         if (request.query) {
             const queryKeys = Object.keys(request.query);
-
+            
             const sort = {};
             const limit = request.query.limit;
             const sortBy = request.query.sortBy;
 
-            const allowedQueries = ['description', 'type', 'department', 'siteName', 'floor', 'createdAt', 'updatedAt', 'limit', 'sortBy'];
+            const allowedQueries = ['siteId', 'eigrp', 'eigrpAsn', 'createdAt', 'updatedAt', 'limit', 'sortBy'];
             const isValidQuery = queryKeys.every((query) => allowedQueries.includes(query));
             if (!isValidQuery){
                 console.error(`Invalid query: ${queryKeys}`);
@@ -30,13 +30,13 @@ const siteQuerystring = async (request, response, next) => {
 
             delete request.query.limit;
             delete request.query.sortBy;
-            const sites = await Site.find({
+            const configs = await Config.find({
                 orgId: request.org._id,
                 ...request.query
             }).limit(Number(limit)).sort(sort);
             
-            console.log(`Sites fetched successfully`);
-            return response.status(200).send(sites);
+            console.log(`Configs fetched successfully`);
+            return response.status(200).send(configs);
         };
     } catch (error) {
         console.error(error);
@@ -47,4 +47,4 @@ const siteQuerystring = async (request, response, next) => {
 };
 
 
-module.exports = siteQuerystring;
+module.exports = configQuerystring;

@@ -4,9 +4,9 @@ const router = new express.Router();
 const Config = require('../models/config');
 const Site = require('../models/site');
 
-const doesSiteExist = require('../middleware/doesSiteExist');
 const doesConfigExist = require('../middleware/doesConfigExist');
 const authenticateToken = require('../middleware/authenticateToken');
+const configQuerystring = require('../middleware/configQuerystring');
 
 
 // Routes
@@ -43,24 +43,8 @@ router.post('/config', authenticateToken, async (request, response) => {
 
 
 // GET /api/config
-router.get('/config', authenticateToken, async (request, response) => {
+router.get('/config', authenticateToken, configQuerystring, async (request, response) => {
     try {
-        if (request.query.siteId) {
-            const siteId = request.query.siteId;
-
-            const site = await Site.findOne({ _id: siteId, orgId: request.org._id });
-            if (!site) {
-                console.error(`Site not found, ID: ${siteId}`);
-                return response.status(404).send({
-                    error: 'Site not found',
-                    ID: siteId
-                });
-            };
-
-            const configs = await Config.find({ orgId: request.org._id, siteId: siteId });
-            console.log(`Configs fetched successfully`);
-            return response.status(200).send(configs);
-        };
         const configs = await Config.find({ orgId: request.org._id });
         console.log(`Configs fetched successfully`);
         response.status(200).send(configs);

@@ -7,6 +7,7 @@ const siteSchema = new mongoose.Schema({
     siteName: {
         type: String,
         required: true,
+        lowercase: true,
         validate(value) {
             if (value.length < 2) {
                 console.error(`Site Name is too short`);

@@ -185,6 +185,16 @@ const configSchema = new mongoose.Schema({
 });
 
 
+configSchema.methods.toJSON = function () {
+    const config = this
+    const configObject = config.toObject();
+
+    delete configObject.__v;
+
+    return configObject;
+};  
+
+
 configSchema.pre('save', async function(next) {
     const config = this;
 
