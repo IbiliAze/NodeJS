@@ -38,7 +38,19 @@ const configSchema = new mongoose.Schema({
     config: {
         type: String,
         required: true
-    }
+    },
+    hosts: [
+        {
+            type: String,
+            required: true,
+            validate(value) {
+                if (value.length < 15) {
+                    console.error('Invalid IP address');
+                    throw new Error('Invalid IP address');
+                }
+            }
+        }
+    ]
 }, {
     timestamps: true
 });
@@ -49,6 +61,7 @@ configSchema.methods.toJSON = function () {
     const configObject = config.toObject();
 
     delete configObject.__v;
+    delete configObject.siteId.__v;
 
     return configObject;
 };  

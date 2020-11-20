@@ -4,6 +4,8 @@ const router = new express.Router();
 const Org = require('../models/org');
 const authenticateToken = require('../middleware/authenticateToken');
 
+const { sendWelcomeEmail, sendGoodbyeEmail } = require('../tools/account');
+
 
 // Routes
 // POST /api/org
@@ -11,6 +13,7 @@ router.post('/org', async (request, response) => {
     const org = new Org(request.body);
     try {
         const token = await org.generateAuthToken();
+        await sendWelcomeEmail(org.email, org.orgName);
         console.log(`Organization saved succesfully, ID: ${org._id}`);
         response.status(201).send({
             message: `Organization saved succesfully`,
@@ -121,6 +124,7 @@ router.delete('/org', authenticateToken, async (request, response) => {
     try {
         const orgId = request.org._id;
         await request.org.remove();
+        await sendGoodbyeEmail(request.org.email, request.org.orgName);
         console.log(`Organization deleted succesfully, ID: ${orgId}`);
         response.status(200).send({
             message: `Organization deleted succesfully`,

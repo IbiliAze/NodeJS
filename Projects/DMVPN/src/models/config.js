@@ -168,10 +168,18 @@ const configSchema = new mongoose.Schema({
             }
         }
     },
-    spokes: {
-        type: Array,
-        required: true
-    },
+    spokes: [
+        {
+            type: String,
+            required: true,
+            validate(value) {
+                if (value.length < 15) {
+                    console.error('Invalid IP address');
+                    throw new Error('Invalid IP address');
+                }
+            }
+        }
+    ],
     eigrp: {
         type: Boolean,
         required: true,
