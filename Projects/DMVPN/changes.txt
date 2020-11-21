@@ -1,3 +1,4 @@
+--------------
 email file{
     src/tools/account.js
 }
@@ -6,12 +7,41 @@ send email {
     POST orgs 
     DELETE orgs
 }
+-------------
 
+
+
+
+-------------
 ENV file {
-    config/
+    config/.env
 }
 
-ENV changes {
-    src/db/mongoose.db
-    package.json
+ENV usage {
+    src/db/mongoose.js
+    src/index.js
+    src/tools/account.js
+    src/models/org.js
+    src/middleware/authenticateToken.js
+}
+
+package.json {
+    scripts
+}
+
+app.js { no listen
+    src/app.js 
+}
+
+index.js {
+    requires
+}
+------------
+
+
+
+
+------------
+Jest {
+
 }

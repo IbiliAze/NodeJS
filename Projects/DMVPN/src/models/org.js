@@ -75,7 +75,7 @@ orgSchema.methods.toJSON = function () {
 
 orgSchema.methods.generateAuthToken = async function() {
     const org = this;
-    const token = jwt.sign({ _id: org._id.toString() }, 'privatesecret' );
+    const token = jwt.sign({ _id: org._id.toString() }, process.env.JWT_SECRET );
 
     org.tokens = org.tokens.concat({ token });
     await org.save();

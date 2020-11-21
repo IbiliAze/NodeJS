@@ -4,9 +4,12 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "node src/index.js",
-    "dev": "env-cmd ./config/dev.env nodemon src/index.js",
-    "test": "jest --watch"
+    "start": "env-cmd ./config/.env node src/index.js",
+    "dev": "env-cmd ./config/.env nodemon src/index.js",
+    "test": "env-cmd ./config/.env jest --watch"
+  },
+  "jest": {
+    "testEnvironment": "node"
   },
   "author": "",
   "license": "ISC",
@@ -15,14 +18,14 @@
     "bcryptjs": "^2.4.3",
     "env-cmd": "^8.0.2",
     "express": "^4.17.1",
+    "jest": "^26.6.3",
     "jsonwebtoken": "^8.5.1",
     "mongodb": "^3.6.2",
     "mongoose": "^5.10.12",
     "morgan": "^1.10.0",
     "multer": "^1.4.2",
+    "supertest": "^3.4.1",
     "validator": "^13.1.17"
   },
-  "devDependencies": {
-    "jest": "^26.6.3"
-  }
+  "devDependencies": {}
 }

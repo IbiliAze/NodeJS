@@ -1,7 +1,7 @@
 const mongoose = require('mongoose');
 
-const databaseName = 'DMVPN';
-const connectionURL = `mongodb://127.0.0.1:27017/${databaseName}`;
+const databaseName = process.env.DATABASE_NAME;
+const connectionURL = `mongodb://${process.env.MONGOOSE_URL}/${databaseName}`;
 
 mongoose.connect(connectionURL, {
     useNewUrlParser: true,

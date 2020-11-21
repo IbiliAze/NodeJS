@@ -1,7 +1,7 @@
 const sgMail = require('@sendgrid/mail');
 
 
-const sendgridAPIKey = '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';
+const sendgridAPIKey = process.env.SENDGRID_API_KEY;
 
 
 sgMail.setApiKey(sendgridAPIKey);
@@ -10,7 +10,7 @@ sgMail.setApiKey(sendgridAPIKey);
 const sendWelcomeEmail = (email, name) => {
     sgMail.send({
         to: email,
-        from: 'ibili73@gmail.com',
+        from: process.env.LOCAL_EMAIL,
         subject: `Welcome to Afenia, ${name}`,
         text: `Welcome, ${name}!` 
     });
@@ -20,7 +20,7 @@ const sendWelcomeEmail = (email, name) => {
 const sendGoodbyeEmail = async (email, name) => {
     sgMail.send({
         to: email,
-        from: 'ibili73@gmail.com',
+        from: process.env.LOCAL_EMAIL,
         subject: `Goodbye, ${name}`,
         text: `Sad to see you go, ${name}!` 
     });
