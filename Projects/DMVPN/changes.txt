@@ -43,5 +43,14 @@ index.js {
 
 ------------
 Jest {
+    tests/org.test.js
+    tests/site.test/js
+}
 
+Mock file {
+
+}
+
+Fixtures file {
+    db.js
 }
