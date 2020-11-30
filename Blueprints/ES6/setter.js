@@ -20,4 +20,4 @@ function Human(name) {
 
 human1 = new Human('jon');
 human1.age = 34
-console.log(human1.age);
+console.log(human1);
