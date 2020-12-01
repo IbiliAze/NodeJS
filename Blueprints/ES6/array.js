@@ -1,6 +1,4 @@
-console.log('\n', 1)
-// Print each item of array
-const jobs = [
+let jobs = [
     { id:1, isActive:true },
     { id:2, isActive:true },
     { id:3, isActive:false },
@@ -8,6 +6,7 @@ const jobs = [
     { id:5, isActive:false },
 ];
 
+console.log('\n', 1)
 for (let job of jobs) {
     console.log(job);
 };
@@ -59,3 +58,76 @@ if (!isValidOperation) {
     return console.log('Invalid')
 };
 console.log('Its valid');
+
+
+
+
+
+console.log('\n', 7)
+// add to array
+jobs.push({
+    id: 6,
+    isActive: true
+});
+console.log(jobs);
+
+
+
+
+
+console.log('\n', 8)
+// remove last item from array
+const removed_item = jobs.pop();
+console.log(jobs);
+
+
+
+
+
+console.log('\n', 9)
+// remove first item from array
+const removed_item_first = jobs.shift();
+console.log(jobs);
+
+
+
+
+
+console.log('\n', 10)
+// add to front array
+jobs.unshift({
+    id: 99,
+    isActive: false
+});
+console.log(jobs);
+
+
+
+
+
+console.log('\n', 11)
+// start at index:2 remove:1 item
+jobs.splice(2, 1);
+console.log(jobs);
+
+
+
+
+
+console.log('\n', 12)
+// start at index:2, remove:0, add at index:2, (Can replace with remove:1)
+jobs.splice(2, 0, {
+    id: 98,
+    isActive: true
+});
+console.log(jobs);
+
+
+
+
+
+console.log('\n', 13)
+// print the item index
+console.log(jobs.indexOf( { id: 5, isActive: false } ));
+
+

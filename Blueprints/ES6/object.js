@@ -3,9 +3,12 @@ console.log('\n', 1)
 let mybook = {
     title: `book1`,
     author: 'author',
-    pageCount: 345
+    pageCount: 345,
+    checkAvailability: function (titleName) {
+        return this.author + titleName
+    }
 };
 
-
-console.log(mybook, 'https:\/\/google.com\/images')
-
+// mybook.checkAvailability(mybook.title)
+console.log(mybook)
+console.log(mybook.checkAvailability('a'))
