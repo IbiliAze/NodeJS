@@ -30,8 +30,8 @@ console.log(activeJobs);
 
 console.log('\n', 4)
 // same as above but looks for 1 match only, its more efficient
-const activeJobs2 = jobs.find((job) => job.isActive);
-console.log(activeJobs2);
+const activeJob2 = jobs.find((job) => job.isActive);
+console.log(activeJob2);
 
 
 
@@ -128,6 +128,7 @@ console.log(jobs);
 
 console.log('\n', 13)
 // print the item index
-console.log(jobs.indexOf( { id: 5, isActive: false } ));
-
+console.log(jobs.findIndex((item, indexOPTIONAL) => {
+    return item.id === 98;
+}));
 

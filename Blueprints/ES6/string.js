@@ -26,3 +26,14 @@ console.log(data.trim())
 console.log('\n', 5)
 // Split
 console.log(data.split(':'))
+
+
+
+console.log('\n', 6)
+// Split with indexes
+const string = '#0f527928-e437-4304-9e31-82a703bcd142'
+const splitted = string.substring(0,3) //0=index of string like arrays, 3=end after x number of characters
+const splitted2 = string.substring(2) 
+console.log(splitted)
+console.log(splitted2)
+

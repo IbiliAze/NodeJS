@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+
+<html> 
+
+    <title>
+        Afenia
+    </title>
+
+    <head>
+    </head>
+
+    <body>
+        <h1>Afenia</h1>
+
+        <h2>Create Site</h2>
+
+        <form id="siteForm">
+            <div>
+                <input type="text" placeholder="Site Name" name="siteName">
+            </div>
+            <div>
+                <input type="text" placeholder="Department" name="department">
+            </div>
+            <div>
+                <input type="text" placeholder="Floor" name="floor">
+            </div>
+            <div>
+                <input type="text" placeholder="Active Site" name="isActive">
+            </div>
+            <div>
+                <button>Submit</button>
+            </div>
+        </form>
+
+        <br><br>
+
+        <h2>Sites</h2>
+
+        <input id="searchText" type="text" placeholder="Search Sites">
+        
+        <label>
+            <input id="hideInactive" type="checkbox"> Hide inactive sites
+        </label>
+
+        <br><br>
+
+        <select id='filterBy'>
+            <option value="alphabetical:Asc">Sort alphabetically - acsending</option>
+            <option value="alphabetical:Desc">Sort alphabetically - decsending</option>
+            <option value="createdAt:Asc">Sort by date - acsending</option>
+            <option value="createdAt:Desc">Sort by date - decsending</option>
+            <option value="updatedAt:Asc">Sort by updated - acsending</option>
+            <option value="updatedAt:Desc">Sort by updated - desending</option>
+        </select>
+
+        <br><br>
+
+        <div id="sites"></div>
+
+        <script src="https://cdn.jsdelivr.net/npm/uuid@latest/dist/umd/uuidv4.min.js"></script>
+        <script src="scripts/home/home-variables.js"></script>
+        <script src="scripts/home/home-functions.js"></script>
+        <script src="scripts/home/home.js"></script>
+
+        <link rel="stylesheet" href="./styles/styles.css">
+    </body>
+
+</html>
