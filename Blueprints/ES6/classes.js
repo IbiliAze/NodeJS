@@ -48,3 +48,6 @@ const teacher2 = new Teacher2('jonny', 'msc.maths'); // the argument is inherite
 teacher2.teach();                                   // from the Teacher class
 teacher2.walk();                                    // the method is inherited from the Person class
 console.log(teacher2.degree);
+
+
+
