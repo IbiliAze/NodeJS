@@ -5,8 +5,8 @@ console.log('\n', 1)
 const alphabet = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H'];
 const numbers = [1, 2, 3, 4, 5, 6];
 
-const [a, b] = alphabet;
-console.log(a,b);
+const [x, y] = alphabet;
+console.log(x,y);
 
 const [a1,,,d] = alphabet;
 console.log(a1,d);
