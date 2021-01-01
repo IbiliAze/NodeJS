@@ -1,14 +1,31 @@
+///////////////////////////////////////////////////////////////////////////////////MODULES
+import React from 'react';         
+import { connect } from 'react-redux';                                                     
+////////////////////////////////////////////////////////////////////////////////COMPONENTS
+import NodesList from '../nodes/NodesList';                                             
+import NodesListFilters from '../nodes/NodesListFilters';
+import NodesForm from '../nodes/NodesForm';                               
+///////////////////////////////////////////////////////////////////////////////////ACTIONS
+import { postNode } from '../../actions/nodes';
 //////////////////////////////////////////////////////////////////////////////////////////
-import React from 'react';                                                              // MODULES
-//////////////////////////////////////////////////////////////////////////////////////////
 
 
 
 
-//////////////////////
-export default (props) => (
+const NodesPage = (props) => (
     <div>
-        {console.log(props)}
-        Nodes
+        <NodesForm 
+            onSubmit={(node) => {
+                props.dispatch(postNode( node ));
+            }}
+        />
+        <br />
+
+        <NodesListFilters />
+        <br />
+        <NodesList />
     </div>
 );
+
+
+export default connect()(NodesPage);

@@ -6,6 +6,7 @@ const morgan = require('morgan');
 const orgRouter = require('./routers/org');
 const siteRouer = require('./routers/site');
 const configRouter = require('./routers/config');
+const nodeRouter = require('./routers/node');
 const notFound = require('./middleware/notFound');
 
 const app = express();
@@ -34,6 +35,7 @@ app.use(morgan('dev'));
 app.use('/api', orgRouter);
 app.use('/api', siteRouer);
 app.use('/api', configRouter);
+app.use('/api', nodeRouter);
 
 
 // Error Handlers

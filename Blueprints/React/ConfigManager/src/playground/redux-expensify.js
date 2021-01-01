@@ -108,7 +108,7 @@ const expenseReducer = (state = expenseReducerDefaultState, action) => {
 };
 
 
-// Filter reduces
+// Filter reducer
 const filterReducer = (state = filterReducerDefaultState, action) => {
     switch(action.type) {
         case 'SET_TEXT_FILTER':
